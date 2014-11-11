@@ -63,14 +63,33 @@ public class FachadaFuncionario {
 
     public void transferir() {
         System.out.println("informe o valor");
+
+    }
+
+    public void emprestar() {
+    }
+
+    ;
+    
+    public void pagarComCartao() {
+        System.out.println("Informe o valor");
+        valor = teclado.nextFloat();
+        if (valor == 0) {
+            System.out.println("Operação cancelada. Retornando ao menu.");
+            return;
+        }
+        //Uso credito, todo o valor passado terá amazenado no saldo da conta e esta que deverá ser paga.
+
+        if ((this.cliente.getSaldo() + valor) > this.cliente.getLimite()) {
+            System.out.println("Limite indisponível.");
+            return;
+        }
+        operacao = new PagamentoComCartao(cliente, valor);
+        operacao.executar();
+    }
+
+    public void pagarFatura() {
         
     
-    
     }
-    
-    public void emprestar(){};
-    
-    public void pagarCartao(){};
-    
-    public void pagarFatura(){};
 }

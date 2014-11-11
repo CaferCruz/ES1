@@ -15,10 +15,10 @@ import java.io.RandomAccessFile;
  */
 public class ContaCorrente extends Conta {   
     
-    //--------------------- Construtores -----------------------------------------
+    //--------------------- Construtores ---------------------------------------
 
-    public ContaCorrente(int idConta, int digito, String dataDeCriacao, float saldo, float taxaDeManutencao) {
-        super(idConta, digito, dataDeCriacao, saldo, taxaDeManutencao);
+    public ContaCorrente(int idConta, float limite, String dataDeCriacao, float saldo, float taxaDeManutencao) {
+        super(idConta, limite, dataDeCriacao, saldo, taxaDeManutencao);
     }    
 
     public ContaCorrente() { }    

@@ -6,6 +6,7 @@
 package Operacoes;
 
 import contas.Conta;
+import java.io.IOException;
 import java.io.RandomAccessFile;
 
 /**
@@ -22,17 +23,17 @@ public class Deposito extends Operacao {
     public void executar() {
         System.out.println("Insira o dinheiro.");
         contaOrigem.creditar(valor);
-
     }
 
     @Override
-    public void salva(RandomAccessFile out) {
-        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void salva(RandomAccessFile out) throws IOException {
+        out.writeUTF(this.toString());
     }
 
     @Override
-    public void le(RandomAccessFile in) {
-        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String toString() {
+        return "Operação: Deposito" + 
+               "\nValor: " + this.getValor() + 
+               "\nData: " + this.getData() + "\n";
     }
-
 }

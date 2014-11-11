@@ -23,7 +23,8 @@ public abstract class Conta implements Observable {
     private String dataDeCriacao; // a data sempre terá 10 caracteres exemplo 15/03/2014
     private float saldo;
     private float taxaDeManutencao;
-    private Observer historico;
+    private Observer historicoOperacoes;
+    
     
     //---------------------------Construtor-------------------------------------
     
@@ -33,11 +34,11 @@ public abstract class Conta implements Observable {
         this.dataDeCriacao = dataDeCriacao;
         this.saldo = saldo;
         this.taxaDeManutencao = taxaDeManutencao;
-        historico = new Historico();
+        historicoOperacoes = new Historico();
     }
     
     public Conta() {
-        historico = new Historico();
+        historicoOperacoes = new Historico();
     }
     
     
@@ -45,6 +46,7 @@ public abstract class Conta implements Observable {
 
     public void setLimite(float limite) {
         this.limite = limite;
+        
     }
     
     public float getLimite() {
@@ -105,19 +107,18 @@ public abstract class Conta implements Observable {
     
     @Override
     public void addObserver(Observer o) {
-        historico = new Historico();
+        historicoOperacoes = new Historico();
     }
 
     @Override
     public void removeObserver(Observer o) {
-        historico = null;
+        historicoOperacoes = null;
     }
 
     @Override
       public void notifyObserver(Operacao o) {
-        this.historico.update(o);
+        this.historicoOperacoes.update(o);
     }
-    
     // --------------------- toString ----------------------------------------
     
     @Override
