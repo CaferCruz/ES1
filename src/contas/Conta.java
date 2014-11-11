@@ -8,10 +8,10 @@ package contas;
 
 import Observer.Observable;
 import Observer.Observer;
+import Operacoes.Operacao;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
@@ -24,7 +24,7 @@ public abstract class Conta implements Observable {
     private String dataDeCriacao; // a data sempre terá 10 caracteres exemplo 15/03/2014
     private float saldo;
     private float taxaDeManutencao;
-    private final List<Observer> observadores;
+    private Observer historico;
     
     //---------------------------Construtor-------------------------------------
     
@@ -34,11 +34,11 @@ public abstract class Conta implements Observable {
         this.dataDeCriacao = dataDeCriacao;
         this.saldo = saldo;
         this.taxaDeManutencao = taxaDeManutencao;
-        observadores = new ArrayList<>();
+        historico = new Historico();
     }
     
     public Conta() {
-        observadores = new ArrayList<>();
+        historico = new Historico();
     }
     
     
@@ -87,24 +87,30 @@ public abstract class Conta implements Observable {
     public abstract void le(RandomAccessFile out) throws IOException;
     
     public abstract void salva(RandomAccessFile out) throws IOException;   
+    
+    public void creditar(float valor){
+        this.saldo += valor;
+    }
+    
+    public void debitar(float valor){
+        this.saldo -= valor;
+    }
 
     //-------------------------Operações de Observable------------------------------------
     
     @Override
     public void addObserver(Observer o) {
-        observadores.add(o);
+        historico = new Historico();
     }
 
     @Override
     public void removeObserver(Observer o) {
-        observadores.remove(o);
+        historico = null;
     }
 
     @Override
-    public void notifyObserver() {
-        for(Observer o : observadores){
-            o.update();
-        }
+    public void notifyObserver(Operacao o) {
+        this.historico.update(o);
     }
     
     // --------------------- toString ----------------------------------------

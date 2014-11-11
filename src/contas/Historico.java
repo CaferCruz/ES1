@@ -7,6 +7,7 @@
 package contas;
 
 import Observer.Observer;
+import Operacoes.Operacao;
 
 /**
  *
@@ -15,8 +16,9 @@ import Observer.Observer;
 public class Historico implements Observer {
 
     @Override
-    public void update() {
+    public void update(Operacao o) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
     }
     
 }

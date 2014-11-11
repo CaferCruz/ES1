@@ -10,6 +10,11 @@ package Operacoes;
  *
  * @author Cafer
  */
-public class Deposito {
+public class Deposito implements Operacao{
+
+    @Override
+    public void executar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

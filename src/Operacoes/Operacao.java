@@ -4,16 +4,12 @@
  * and open the template in the editor.
  */
 
-package Observer;
-
-import Operacoes.Operacao;
+package Operacoes;
 
 /**
  *
  * @author Cafer
  */
-public interface Observable {
-    public void addObserver(Observer o);
-    public void removeObserver(Observer o);
-    public void notifyObserver(Operacao o);
+public interface Operacao {
+    public void executar();
 }
