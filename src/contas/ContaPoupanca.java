@@ -26,6 +26,10 @@ public class ContaPoupanca extends Conta {
     
     // ------------------ Getters e Setters ------------------------------------
 
+    public ContaPoupanca(int idConta, int digito, String dataDeCriacao, float saldo, float taxaDeManutencao) {
+        super(idConta, digito, dataDeCriacao, saldo, taxaDeManutencao);
+    }
+
     public float getTaxaDeRendimento() {
         return taxaDeRendimento;
     }
@@ -41,7 +45,7 @@ public class ContaPoupanca extends Conta {
     }
 
     @Override
-    public void salva(RandomAccessFile out) throws IOException{
+    public void salva(RandomAccessFile out) throws IOException {
         out.writeInt(this.getIdConta());
         out.writeInt(this.getDigito());
         out.writeUTF(this.getDataDeCriacao());
