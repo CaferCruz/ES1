@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Operacoes;
 
 import contas.Conta;
@@ -13,7 +12,7 @@ import java.io.RandomAccessFile;
  *
  * @author Cafer
  */
-public class Emprestimo extends Operacao{
+public class Emprestimo extends Operacao {
 
     public Emprestimo(Conta contaOrigem, float valor) {
         super(contaOrigem, valor);
@@ -21,18 +20,18 @@ public class Emprestimo extends Operacao{
 
     @Override
     public void executar() {
-        
-    
+            contaOrigem.creditar(valor);
+            System.out.println("Empréstimo realizado com sucesso.");
     }
 
     @Override
     public void salva(RandomAccessFile out) {
-     //   throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //   throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void le(RandomAccessFile in) {
-      //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }
