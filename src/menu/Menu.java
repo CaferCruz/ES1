@@ -40,12 +40,12 @@ public class Menu {
     
     private static final Scanner teclado = new Scanner(System.in);    
     
+    private static Agencia agencia = new Agencia(555, "Av. São Sebastião, Niteroi, RJ");
+    private static Gerente gerente = new Gerente(1234, "Carlos de Souza");
     //-------------------- Main ------------------------------------------------
     
     public static void main(String[] args) {        
         
-        Agencia agencia = new Agencia(555, "Av. São Sebastião, Niteroi, RJ");
-        Gerente gerente = new Gerente(1234, "Carlos de Souza");
         
         boolean sair = false;                
                 
@@ -56,7 +56,7 @@ public class Menu {
             int opcao = teclado.nextInt();            
             switch(opcao) {
                 case 1:
-                    operacoesGerente(gerente, agencia);
+                    operacoesGerente();
                     break;
                 case 2:
                     operacoesFuncionario();
@@ -79,7 +79,7 @@ public class Menu {
     
     // --------------------- Metodos -------------------------------------------
 
-    private static void operacoesGerente(Gerente gerente, Agencia agencia) {
+    private static void operacoesGerente() {
 
         System.out.println("** Bem vindo Gerente **");
         System.out.print("Digite sua senha: ");

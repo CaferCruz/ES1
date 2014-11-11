@@ -43,8 +43,12 @@ public class Agencia {
         return clientes.get(cpf);
     }
     
-    public Map<String, Cliente> getListaDeClientes() {
-        return clientes;
+    public void getListaDeClientes() {
+        for (Map.Entry<String, Cliente> entry : clientes.entrySet()) {
+            String string = entry.getKey();
+            Cliente cliente = entry.getValue();
+            System.out.println("" + cliente);
+        }
     }
     
     //--------------------- to String ------------------------------------------
