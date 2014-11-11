@@ -7,6 +7,7 @@
 package Operacoes;
 
 import contas.Conta;
+import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -38,8 +39,7 @@ public abstract class Operacao {
     }
     //-------------------------Metodos Abstratos--------------------------------
     public abstract void executar();
-    public abstract void salva(RandomAccessFile out);
-    public abstract void le(RandomAccessFile in);
+    public abstract void salva(RandomAccessFile out)throws IOException;
     //-------------------------Getters e Setters--------------------------------
     public Conta getContaOrigem() {
         return contaOrigem;
