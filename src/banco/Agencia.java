@@ -44,10 +44,9 @@ public class Agencia {
     }
     
     public void getListaDeClientes() {
-        for (Map.Entry<String, Cliente> entry : clientes.entrySet()) {
-            String string = entry.getKey();
-            Cliente cliente = entry.getValue();
-            System.out.println("" + cliente);
+        Iterator iterador = clientes.values().iterator();
+        while(iterador.hasNext()) {
+            System.out.println("" + iterador.next());
         }
     }
     
