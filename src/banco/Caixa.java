@@ -10,7 +10,6 @@ package banco;
  *
  * @author Romulo
  */
-public abstract class Funcionario {
+public class Caixa extends Funcionario{
     
-    private String nome;
 }

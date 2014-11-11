@@ -37,6 +37,10 @@ public abstract class Conta implements Observable {
         observadores = new ArrayList<>();
     }
     
+    public Conta() {
+        observadores = new ArrayList<>();
+    }
+    
     
     //------------------ Getter e Setters --------------------------------------
 
@@ -80,6 +84,8 @@ public abstract class Conta implements Observable {
     
     // ---------------------- Operações ----------------------------------------    
     
+    public abstract void le(RandomAccessFile out) throws IOException;
+    
     public abstract void salva(RandomAccessFile out) throws IOException;   
 
     //-------------------------Operações de Observable------------------------------------
@@ -99,6 +105,15 @@ public abstract class Conta implements Observable {
         for(Observer o : observadores){
             o.update();
         }
+    }
+    
+    // --------------------- toString ----------------------------------------
+    
+    @Override
+    public String toString() {
+        return "Numero: " + idConta + "-" + digito + " | " +
+                "Saldo: " + saldo + " | " + 
+                "Taxa de manutenção: " + taxaDeManutencao;
     }
     
 }

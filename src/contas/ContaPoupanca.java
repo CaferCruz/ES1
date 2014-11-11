@@ -40,18 +40,27 @@ public class ContaPoupanca extends Conta {
     
     // --------------------- Metodos -------------------------------------------
     
-    public static Conta le(RandomAccessFile in) throws IOException {
-        return new ContaPoupanca(in.readInt(), in.readInt(), in.readUTF(), in.readFloat(), in.readFloat(), in.readFloat());
+    @Override
+    public void le(RandomAccessFile out) throws IOException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void salva(RandomAccessFile out) throws IOException {
-        out.writeInt(this.getIdConta());
-        out.writeInt(this.getDigito());
-        out.writeUTF(this.getDataDeCriacao());
-        out.writeFloat(this.getSaldo());
-        out.writeFloat(this.getTaxaDeManutencao());
-        out.writeFloat(this.getTaxaDeRendimento());
+        out.writeInt(getIdConta());
+        out.writeInt(getDigito());
+        out.writeUTF(getDataDeCriacao());
+        out.writeFloat(getSaldo());
+        out.writeFloat(getTaxaDeManutencao());
+        out.writeFloat(taxaDeRendimento);
+    }
+    
+    //--------------------- toString -------------------------------------------
+    
+    @Override
+    public String toString() {
+        return super.toString() + " | " +
+                "Taxa de Rendimento: " + taxaDeRendimento;
     }
     
 }
