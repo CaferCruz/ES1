@@ -6,7 +6,8 @@
 
 package contas;
 
-import java.util.Date;
+import java.io.IOException;
+import java.io.RandomAccessFile;
 
 /**
  *
@@ -16,9 +17,12 @@ public abstract class Conta {
     
     private int idConta;
     private int digito;
-    private Date dataDeCriacao;
+    private String dataDeCriacao; // a data sempre terá 10 caracteres exemplo 15/03/2014
     private float saldo;
     private float taxaDeManutencao;
+    
+    
+    //------------------ Getter e Setters ------------------------------------
 
     public int getIdConta() {
         return idConta;
@@ -29,11 +33,11 @@ public abstract class Conta {
         this.idConta = idConta;
     }
 
-    public Date getDataDeCriacao() {
+    public String getDataDeCriacao() {
         return dataDeCriacao;
     }
 
-    public void setDataDeCriacao(Date dataDeCriacao) {
+    public void setDataDeCriacao(String dataDeCriacao) {
         this.dataDeCriacao = dataDeCriacao;
     }
 
@@ -53,5 +57,15 @@ public abstract class Conta {
         this.taxaDeManutencao = taxaDeManutencao;
     }    
     
+    
+    // ---------------------- Operações --------------------------------------    
+    
+    public void salva(RandomAccessFile out) throws IOException {
+        out.writeInt(idConta);
+        out.writeInt(digito);
+        out.writeUTF(dataDeCriacao);
+        out.writeFloat(saldo);
+        out.writeFloat(taxaDeManutencao);
+    }
     
 }
