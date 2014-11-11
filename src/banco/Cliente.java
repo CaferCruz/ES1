@@ -26,6 +26,14 @@ public class Cliente {
         this.nome = nome;
         this.cpf = cpf;
     }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
     
     // ---------------- getters e setters --------------------------------------
 
@@ -41,7 +49,9 @@ public class Cliente {
     
     @Override
     public String toString() {
-        return null;
+        return "Nome: " + nome + "\n" +
+                "CPF: " + cpf + "\n" +
+                contas.toString();
     }
     
 }

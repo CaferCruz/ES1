@@ -6,28 +6,50 @@
 
 package banco;
 
+import java.util.Map;
+import java.util.Scanner;
+
 /**
  *
  * @author Romulo
  */
 public class Gerente extends Funcionario{
     
-    private String nome;
-    private int matricula;
     private final String senha = "d4ft";
 
-    public Gerente() { }
+    //-------------------- Construtores ----------------------------------------
+
+    public Gerente(int matricula, String nome) {
+        super(nome, matricula);
+    }
     
     //-------------------- Metodos --------------------------------------------- 
     
     public boolean verificarSenha(String senha) {
-        return senha.equals(senha);
+        return this.senha.equals(senha);
+    }
+    
+    public void cadastrarCliente(Agencia agencia) {
+        Scanner teclado = new Scanner(System.in);
+        
+        System.out.println("Informe o NOME do cliente: ");
+        String nomeCliente = teclado.next() + teclado.nextLine();
+        System.out.println("Informe o CPF do cliente: ");
+        String cpfCliente = teclado.next() + teclado.nextLine();
+        Cliente cliente = new Cliente(nomeCliente, cpfCliente);
+        
+        agencia.adicionaCliente(cliente);
+        System.out.println("");
+    }
+    
+    public void listarClientes(Agencia agencia) {         
+        for (Map.Entry<String, Cliente> en : agencia.getListaDeClientes().entrySet()) {
+            String chave = en.getKey();
+            Cliente cliente = en.getValue();
+            System.out.println(cliente);
+        }
     }
     
     //-------------------- to String -------------------------------------------
     
-    @Override
-    public String toString() {
-        return nome + " " + matricula;
-    }
 }

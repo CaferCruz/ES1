@@ -11,5 +11,9 @@ package banco;
  * @author Romulo
  */
 public class Caixa extends Funcionario{
+
+    public Caixa(String nome, int matricula) {
+        super(nome, matricula);
+    }
     
 }

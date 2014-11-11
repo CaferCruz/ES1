@@ -6,7 +6,6 @@
 
 package banco;
 
-import contas.Conta;
 import java.util.*;
 
 /**
@@ -15,11 +14,44 @@ import java.util.*;
  */
 public class Agencia {
     
-    private int codigo;
-    private String nome;
-    private String endereco;
+    private final int codigo;
+    private final String endereco;
     
-    private Map<Integer,Conta> contas;
+    private final Map<String,Cliente> clientes;
+    
+    // --------------------- Construtores --------------------------------------
+
+    public Agencia(int codigo, String endereco) {
+        this.codigo = codigo;
+        this.endereco = endereco;
+        clientes = new HashMap<>();
+    }    
     
     
+    // -------------------- Metodos --------------------------------------------
+    
+    public void adicionaCliente(Cliente cliente) {
+        if(!clientes.containsKey(cliente.getCpf())) {
+            clientes.put(cliente.getCpf(), cliente);            
+        }
+        else {
+            System.out.println("** Já existe um cliente com este CPF! **");
+        }
+    }
+    
+    public Cliente getCliente(String cpf) {
+        return clientes.get(cpf);
+    }
+    
+    public Map<String, Cliente> getListaDeClientes() {
+        return clientes;
+    }
+    
+    //--------------------- to String ------------------------------------------
+    
+    @Override
+    public String toString() {
+        return codigo + " " + endereco;
+    }
+       
 }

@@ -1,6 +1,7 @@
 package menu;
 
 
+import banco.Agencia;
 import banco.Gerente;
 import java.util.Scanner;
 
@@ -14,43 +15,48 @@ import java.util.Scanner;
  *
  * @author Romulo
  */
-public class Menu {
-    
-    private static final Scanner teclado = new Scanner(System.in);
+public class Menu {    
     
     private static final String MENU_INICIAL = 
             "1 - Gerente \n" + 
             "2 - FuncionarioCaixa \n" +
             "3 - Cliente \n" +
-            "0 - Sair \n";
+            "0 - Sair \n" +
+            "digite a opção->";
     
     private static final String MENU_GERENTE = 
             "1 - Cadastrar cliente \n" + 
             "2 - Realizar emprestimo \n" + 
             "3 - Listar clientes \n" + 
-            "0 - voltar \n";
+            "0 - voltar \n" +
+            "digite a opção -> ";
     
     private static final String MENU_FUNCIONARIO =
             "1 - Saque \n" +
             "2 - Deposito \n" +
             "3 - Transferencia \n" +
-            "0 - voltar";
+            "0 - voltar" + 
+            "digite a opção ->";
+    
+    private static final Scanner teclado = new Scanner(System.in);    
     
     //-------------------- Main ------------------------------------------------
     
     public static void main(String[] args) {        
         
+        Agencia agencia = new Agencia(555, "Av. São Sebastião, Niteroi, RJ");
+        Gerente gerente = new Gerente(1234, "Carlos de Souza");
+        
         boolean sair = false;                
                 
-        System.out.println("** Bem vindo ao BankLine **");               
+        System.out.println("** Bem vindo ao BankLine **\n");               
         while(!sair) {            
-            System.out.println(MENU_INICIAL);
-            
-            System.out.print("digite sua opção: ");
+            System.out.println("--- MENU PRINCIPAL ---");
+            System.out.println(MENU_INICIAL);            
             int opcao = teclado.nextInt();            
             switch(opcao) {
                 case 1:
-                    operacoesGerente();
+                    operacoesGerente(gerente, agencia);
                     break;
                 case 2:
                     operacoesFuncionario();
@@ -65,6 +71,7 @@ public class Menu {
                     System.out.println("Opção inválida =/");
                     break;
             }
+            System.out.println();
         }
         System.out.println("** Fim **");
         
@@ -72,32 +79,33 @@ public class Menu {
     
     // --------------------- Metodos -------------------------------------------
 
-    private static void operacoesGerente() {
-        Gerente g = new Gerente();
+    private static void operacoesGerente(Gerente gerente, Agencia agencia) {
+
         System.out.println("** Bem vindo Gerente **");
         System.out.print("Digite sua senha: ");
-        String senha = teclado.nextLine();
+        String senha = teclado.next() + teclado.nextLine();
         
-        if(!g.verificarSenha(senha)) {
+        if(!gerente.verificarSenha(senha)) {
             System.out.println("** Senha incorreta! **");
         }
         else {
             boolean sair = false;
-            
+            System.out.println("");
             while(!sair) {
+                System.out.println("--- MENU GERENTE ---");
                 System.out.println(MENU_GERENTE);
-                
-                System.out.print("digite sua opção: ");
                 int opcao = teclado.nextInt();
                 switch(opcao) {
                     case 1:
-                        // cadastrar cliente 
+                        // cadastrar cliente
+                        gerente.cadastrarCliente(agencia);                        
                         break;
                     case 2:
                         // realizar emprestimo
                         break;
                     case 3:
                         // listar clientes
+                        gerente.listarClientes(agencia);
                         break;
                     case 0: 
                         // voltar ao menu principal
@@ -106,7 +114,8 @@ public class Menu {
                     default:
                         System.out.println("Opção inválida =/");
                         break;
-                }        
+                }
+                System.out.println();
             }                
         }
         

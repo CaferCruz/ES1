@@ -12,5 +12,17 @@ package banco;
  */
 public abstract class Funcionario {
     
-    private String nome;
+    private final String nome;
+    private final int matricula;
+
+    public Funcionario(String nome, int matricula) {
+        this.nome = nome;
+        this.matricula = matricula;
+    }    
+    
+    
+    @Override
+    public String toString() {
+        return nome + " " + matricula;
+    }
 }
