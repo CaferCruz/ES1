@@ -88,6 +88,9 @@ public abstract class Conta implements Observable {
     public void debitar(float valor){
         this.saldo -= valor;
     }
+     public void salvarHistorico(Operacao o){
+         this.notifyObserver(o);
+     }
 
     //-------------------------Operações de Observable------------------------------------
     
@@ -102,7 +105,7 @@ public abstract class Conta implements Observable {
     }
 
     @Override
-    public void notifyObserver(Operacao o) {
+      public void notifyObserver(Operacao o) {
         this.historico.update(o);
     }
     

@@ -6,37 +6,33 @@
 package Operacoes;
 
 import contas.*;
-import java.text.SimpleDateFormat;
-import java.util.*;
+import java.io.RandomAccessFile;
 
 /**
  *
  * @author Cafer
  */
-public class Saque implements Operacao {
+public class Saque extends Operacao {
 
-    private final Conta contaDestino;
-    private final Date data;
-    private final float valor;
-    public Saque(Conta contaDestino, float valor) {
-        this.contaDestino = contaDestino;
-        this.valor = valor;
-        this.data = pegaData();
+    public Saque(Conta conta, float valor) {
+        super(conta, valor);
     }
 
-    
-    
-    
-    
     @Override
     public void executar() {
-     contaDestino.debitar(valor);
+        contaOrigem.debitar(valor);
         System.out.println("Por favor retire o dinheiro.");
     }
 
-    private Date pegaData() {
-
-        return Calendar.getInstance().getTime();
+    @Override
+    public void salva(RandomAccessFile out) {
         
     }
+
+    @Override
+    public void le(RandomAccessFile in) {
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
 }

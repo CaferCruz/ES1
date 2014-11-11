@@ -6,6 +6,7 @@
 
 package Operacoes;
 
+import contas.Conta;
 import java.util.Scanner;
 
 /**
@@ -14,21 +15,21 @@ import java.util.Scanner;
  */
 public class MenuFuncionario {
     Scanner teclado = new Scanner(System.in);
-
+    Conta usuario;
+    
 //--------------------------------Menu--------------------------------------
     
     
     
-    //-------------------------------Métodos------------------------------------
+//-------------------------------Métodos------------------------------------
     
     
     public void sacar(){
         float valor;
         System.out.println("Informe o valor:");
         valor = teclado.nextFloat();
-        
-        
-        
-        
+        Saque saque = new Saque(usuario, valor);
+        saque.executar();
+        usuario.salvarHistorico(saque);
     }
 }
