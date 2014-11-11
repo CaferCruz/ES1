@@ -14,6 +14,10 @@ public class ContaPoupanca extends Conta {
     
     private float taxaDeRendimento;
 
+    public ContaPoupanca(int idConta, int digito, String dataDeCriacao, float saldo, float taxaDeManutencao) {
+        super(idConta, digito, dataDeCriacao, saldo, taxaDeManutencao);
+    }
+
     public float getTaxaDeRendimento() {
         return taxaDeRendimento;
     }
