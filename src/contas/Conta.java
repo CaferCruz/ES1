@@ -11,6 +11,7 @@ import Observer.Observer;
 import Operacoes.Operacao;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.util.ArrayList;
 
 /**
  *
@@ -33,6 +34,10 @@ public abstract class Conta implements Observable {
         this.dataDeCriacao = dataDeCriacao;
         this.saldo = saldo;
         this.taxaDeManutencao = taxaDeManutencao;
+        historico = new Historico();
+    }
+    
+    public Conta() {
         historico = new Historico();
     }
     
@@ -79,6 +84,8 @@ public abstract class Conta implements Observable {
     
     // ---------------------- Operações ----------------------------------------    
     
+    public abstract void le(RandomAccessFile out) throws IOException;
+    
     public abstract void salva(RandomAccessFile out) throws IOException;   
     
     public void creditar(float valor){
@@ -107,6 +114,15 @@ public abstract class Conta implements Observable {
     @Override
       public void notifyObserver(Operacao o) {
         this.historico.update(o);
+    }
+    
+    // --------------------- toString ----------------------------------------
+    
+    @Override
+    public String toString() {
+        return "Numero: " + idConta + "-" + digito + " | " +
+                "Saldo: " + saldo + " | " + 
+                "Taxa de manutenção: " + taxaDeManutencao;
     }
     
 }

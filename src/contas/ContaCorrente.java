@@ -13,28 +13,39 @@ import java.io.RandomAccessFile;
  *
  * @author Romulo
  */
-public class ContaCorrente extends Conta {    
+public class ContaCorrente extends Conta {   
     
-    //--------------------- Construtor -----------------------------------------
+    //--------------------- Construtores -----------------------------------------
 
     public ContaCorrente(int idConta, int digito, String dataDeCriacao, float saldo, float taxaDeManutencao) {
         super(idConta, digito, dataDeCriacao, saldo, taxaDeManutencao);
-    }
+    }    
+
+    public ContaCorrente() { }    
     
     
     //--------------------- Metodos --------------------------------------------
     
-    public static Conta le(RandomAccessFile in) throws IOException {
-        return new ContaCorrente(in.readInt(), in.readInt(), in.readUTF(), in.readFloat(), in.readFloat());
+    @Override
+    public void le(RandomAccessFile in) throws IOException {
+        setIdConta(in.readInt() , in.readInt());
+        setDataDeCriacao(in.readUTF());
+        setSaldo(in.readFloat());
+        setTaxaDeManutencao(in.readFloat());
     }
 
     @Override
     public void salva(RandomAccessFile out) throws IOException {
-        out.writeInt(this.getIdConta());
-        out.writeInt(this.getDigito());
-        out.writeUTF(this.getDataDeCriacao());
-        out.writeFloat(this.getSaldo());
-        out.writeFloat(this.getTaxaDeManutencao());
+        out.writeInt(getIdConta());
+        out.writeInt(getDigito());
+        out.writeUTF(getDataDeCriacao());
+        out.writeFloat(getSaldo());
+        out.writeFloat(getTaxaDeManutencao());
+    }
+    
+    @Override
+    public String toString() {
+        return super.toString();
     }
      
 }

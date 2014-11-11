@@ -13,7 +13,7 @@ import Operacoes.Operacao;
  *
  * @author Cafer
  */
-public class Historico implements Observer{
+public class Historico implements Observer {
 
     @Override
     public void update(Operacao o) {
