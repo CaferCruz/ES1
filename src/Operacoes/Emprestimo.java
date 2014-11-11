@@ -10,6 +10,11 @@ package Operacoes;
  *
  * @author Cafer
  */
-public class Emprestimo {
+public class Emprestimo implements Operacao{
+
+    @Override
+    public void executar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
