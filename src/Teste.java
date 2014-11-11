@@ -1,47 +1,24 @@
-
-<<<<<<< HEAD
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-
-=======
->>>>>>> origin/master
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-<<<<<<< HEAD
-=======
+
 
 import contas.*;
 import java.io.*;
 import java.util.*;
 
 
->>>>>>> origin/master
 /**
  *
  * @author Romulo
  */
 public class Teste {
-<<<<<<< HEAD
-
-    public static void main(String[] args) {
-        Date d = Calendar.getInstance().getTime();
-        DateFormat f = new SimpleDateFormat("dd/MM/YYYY");
-        DateFormat h = new SimpleDateFormat("HH:mm:ss");
-        System.out.println(f.format(d) + " " + h.format(d));
-
-=======
-    
+   
     public static String NOME_ARQUIVO = "contas.dat";
     
-    public static void main(String[] args) throws IOException {
-        
-        
+    public static void main(String[] args) throws IOException {               
         
         List<Conta> contas = new ArrayList<>();
         RandomAccessFile arquivo = null;
@@ -91,6 +68,6 @@ public class Teste {
                 arquivo.close();
             }
         }
->>>>>>> origin/master
+        
     }
 }

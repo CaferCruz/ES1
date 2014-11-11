@@ -41,14 +41,19 @@ public class ContaPoupanca extends Conta {
     // --------------------- Metodos -------------------------------------------
     
     @Override
-    public void le(RandomAccessFile out) throws IOException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void le(RandomAccessFile in) throws IOException {
+        setIdConta(in.readInt());
+        setLimite(in.readFloat());
+        setDataDeCriacao(in.readUTF());
+        setSaldo(in.readFloat());
+        setTaxaDeManutencao(in.readFloat());
+        setTaxaDeRendimento(in.readFloat());
     }
 
     @Override
     public void salva(RandomAccessFile out) throws IOException {
         out.writeInt(getIdConta());
-        out.writeInt(getDigito());
+        out.writeFloat(getLimite());
         out.writeUTF(getDataDeCriacao());
         out.writeFloat(getSaldo());
         out.writeFloat(getTaxaDeManutencao());

@@ -28,7 +28,8 @@ public class ContaCorrente extends Conta {
     
     @Override
     public void le(RandomAccessFile in) throws IOException {
-        setIdConta(in.readInt() , in.readInt());
+        setIdConta(in.readInt());
+        setLimite(in.readFloat());
         setDataDeCriacao(in.readUTF());
         setSaldo(in.readFloat());
         setTaxaDeManutencao(in.readFloat());
@@ -37,7 +38,7 @@ public class ContaCorrente extends Conta {
     @Override
     public void salva(RandomAccessFile out) throws IOException {
         out.writeInt(getIdConta());
-        out.writeInt(getDigito());
+        out.writeFloat(getLimite());
         out.writeUTF(getDataDeCriacao());
         out.writeFloat(getSaldo());
         out.writeFloat(getTaxaDeManutencao());

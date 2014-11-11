@@ -1,4 +1,6 @@
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -18,7 +20,12 @@ public class TesteDate {
         
         Calendar calendar = Calendar.getInstance();
         Date data = calendar.getTime();
-        System.out.println(data);
+        System.out.println("Sem formatação: " + data);
+        
+        Date d = Calendar.getInstance().getTime();
+        DateFormat f = new SimpleDateFormat("dd/MM/YYYY");
+        DateFormat h = new SimpleDateFormat("HH:mm:ss");
+        System.out.println("Com formatação: " + f.format(d) + " " + h.format(d));
         
     }
     

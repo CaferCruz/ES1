@@ -6,14 +6,31 @@
 
 package Operacoes;
 
+import contas.Conta;
+import java.io.RandomAccessFile;
+
 /**
  *
  * @author Cafer
  */
-public class PagamentoCartao implements Operacao{
+public class PagamentoCartao extends Operacao{
+
+    public PagamentoCartao(Conta contaOrigem, float valor) {
+        super(contaOrigem, valor);
+    }
 
     @Override
     public void executar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void salva(RandomAccessFile out) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void le(RandomAccessFile in) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

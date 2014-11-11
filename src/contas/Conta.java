@@ -11,7 +11,6 @@ import Observer.Observer;
 import Operacoes.Operacao;
 import java.io.IOException;
 import java.io.RandomAccessFile;
-import java.util.ArrayList;
 
 /**
  *
@@ -20,7 +19,7 @@ import java.util.ArrayList;
 public abstract class Conta implements Observable {
     
     private int idConta;
-    private int digito;
+    private float limite;
     private String dataDeCriacao; // a data sempre terá 10 caracteres exemplo 15/03/2014
     private float saldo;
     private float taxaDeManutencao;
@@ -28,9 +27,9 @@ public abstract class Conta implements Observable {
     
     //---------------------------Construtor-------------------------------------
     
-    public Conta(int idConta, int digito, String dataDeCriacao, float saldo, float taxaDeManutencao) {
+    public Conta(int idConta, float limite, String dataDeCriacao, float saldo, float taxaDeManutencao) {
         this.idConta = idConta;
-        this.digito = digito;
+        this.limite = limite;
         this.dataDeCriacao = dataDeCriacao;
         this.saldo = saldo;
         this.taxaDeManutencao = taxaDeManutencao;
@@ -44,16 +43,19 @@ public abstract class Conta implements Observable {
     
     //------------------ Getter e Setters --------------------------------------
 
+    public void setLimite(float limite) {
+        this.limite = limite;
+    }
+    
+    public float getLimite() {
+        return limite;
+    }
+
     public int getIdConta() {
         return idConta;
     }
     
-    public int getDigito() {
-        return digito;
-    }
-
-    public void setIdConta(int idConta, int digito) {
-        this.digito = digito;
+    public void setIdConta(int idConta) {
         this.idConta = idConta;
     }
 
@@ -84,7 +86,7 @@ public abstract class Conta implements Observable {
     
     // ---------------------- Operações ----------------------------------------    
     
-    public abstract void le(RandomAccessFile out) throws IOException;
+    public abstract void le(RandomAccessFile in) throws IOException;
     
     public abstract void salva(RandomAccessFile out) throws IOException;   
     
@@ -120,7 +122,7 @@ public abstract class Conta implements Observable {
     
     @Override
     public String toString() {
-        return "Numero: " + idConta + "-" + digito + " | " +
+        return "Numero: " + idConta + "-" + limite + " | " +
                 "Saldo: " + saldo + " | " + 
                 "Taxa de manutenção: " + taxaDeManutencao;
     }
