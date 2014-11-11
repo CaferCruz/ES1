@@ -4,20 +4,16 @@
  * and open the template in the editor.
  */
 
-package contas;
-
-import java.util.List;
 
 /**
  *
  * @author Romulo
  */
-public class Agencia {
+public class Teste {
     
-    private int codigo;
-    private String nome;
-    private String endereco;
-    
-    private List<Conta> contas;
+    public static void main(String[] args) {
+        
+        
+    }
     
 }

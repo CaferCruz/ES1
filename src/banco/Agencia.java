@@ -4,12 +4,22 @@
  * and open the template in the editor.
  */
 
-package contas;
+package banco;
+
+import contas.Conta;
+import java.util.*;
 
 /**
  *
  * @author Romulo
  */
-public class Funcionario {
+public class Agencia {
+    
+    private int codigo;
+    private String nome;
+    private String endereco;
+    
+    private Map<Integer,Conta> contas;
+    
     
 }

@@ -21,11 +21,25 @@ public abstract class Conta {
     private float saldo;
     private float taxaDeManutencao;
     
+    // ------------------ Construtores -----------------------------------------
+
+    public Conta(int idConta, int digito, String dataDeCriacao, float saldo, float taxaDeManutencao) {
+        this.idConta = idConta;
+        this.digito = digito;
+        this.dataDeCriacao = dataDeCriacao;
+        this.saldo = saldo;
+        this.taxaDeManutencao = taxaDeManutencao;
+    }
     
-    //------------------ Getter e Setters ------------------------------------
+    
+    //------------------ Getter e Setters --------------------------------------
 
     public int getIdConta() {
         return idConta;
+    }
+    
+    public int getDigito() {
+        return digito;
     }
 
     public void setIdConta(int idConta, int digito) {
@@ -55,17 +69,13 @@ public abstract class Conta {
 
     public void setTaxaDeManutencao(float taxaDeManutencao) {
         this.taxaDeManutencao = taxaDeManutencao;
-    }    
+    }  
     
     
-    // ---------------------- Operações --------------------------------------    
+    // ---------------------- Operações ----------------------------------------    
     
-    public void salva(RandomAccessFile out) throws IOException {
-        out.writeInt(idConta);
-        out.writeInt(digito);
-        out.writeUTF(dataDeCriacao);
-        out.writeFloat(saldo);
-        out.writeFloat(taxaDeManutencao);
-    }
+    public abstract void salva(RandomAccessFile out);   
+
+    
     
 }
