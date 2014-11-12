@@ -70,37 +70,14 @@ public class FachadaOperacoes {
     }
 
     public void transferir() {
-        int contaDestino;
-        while (!feito) {
-            System.out.println("Informe a conta desejada");
-            contaDestino = teclado.nextInt();
-            
-            System.out.println("Informe o valor:");
-            valor = teclado.nextFloat();
-            if (valor == 0) {
-                System.out.println("Operação cancelada, retornando ao menu.");
-                return;
-            }
-            if (valor < cliente.getSaldo()) {
-                operacao = new Saque(cliente, valor);
-                operacao.executar();
-                cliente.setUpdate(operacao.toString());
-                cliente.setTipoUpdate(Conta.OPERACAO);
-                cliente.salvarHistorico();
-                feito = true;
-            } else {
-                System.out.println("Saldo insuficiente.");
-            }
+        System.out.println("informe o valor");
 
-        }
-        
     }
 
     public void emprestar() {
-        
     }
 
-    
+    ;
     
     public void pagarComCartao() {
         System.out.println("Informe o valor");
