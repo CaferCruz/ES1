@@ -19,6 +19,8 @@ public class Agencia {
     
     private final Map<String,Cliente> clientes;
     
+    static int codCli = 0;
+    
     // --------------------- Construtores --------------------------------------
 
     public Agencia(int codigo, String endereco) {

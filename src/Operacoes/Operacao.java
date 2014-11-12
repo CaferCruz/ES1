@@ -23,7 +23,7 @@ public abstract class Operacao {
     protected String data;
     protected float valor;
 
-    //-------------------------Contrutor----------------------------------------
+    //-------------------------Construtor---------------------------------------
     public Operacao(Conta contaOrigem, float valor) {
         this.contaOrigem = contaOrigem;
         this.data = pegaData();

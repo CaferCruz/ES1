@@ -14,8 +14,10 @@ import java.io.RandomAccessFile;
  */
 public class CartaoCredito extends Conta {
 
-    private float valorTotal = 0;
-
+    //o valor da fatura é dado pelo valor em conta
+    //o valor é acrecido na fatura usando o creditar
+    //a fatura é paga com o debitar
+    //zero seria a fatura paga.
     public CartaoCredito(int idConta, float limite, String dataDeCriacao, float saldo, float taxaDeManutencao) {
         super(idConta, limite, dataDeCriacao, saldo, taxaDeManutencao);
     }

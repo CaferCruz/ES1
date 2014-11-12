@@ -6,6 +6,7 @@
 
 package banco;
 
+import contas.Conta;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -29,17 +30,12 @@ public class Gerente extends Funcionario{
         return this.senha.equals(senha);
     }
     
-    public void cadastrarCliente(Agencia agencia) {
-        Scanner teclado = new Scanner(System.in);
-        
-        System.out.println("Informe o NOME do cliente: ");
-        String nomeCliente = teclado.next() + teclado.nextLine();
-        System.out.println("Informe o CPF do cliente: ");
-        String cpfCliente = teclado.next() + teclado.nextLine();
-        Cliente cliente = new Cliente(nomeCliente, cpfCliente);
-        
+    public void salvarCliente(Agencia agencia, Cliente cliente) {
         agencia.adicionaCliente(cliente);
-        System.out.println("");
+    }
+    
+        public void cadastrarCliente() {
+
     }
     
     public void listarClientes(Agencia agencia) {         

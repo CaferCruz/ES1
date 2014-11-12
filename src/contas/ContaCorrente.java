@@ -11,11 +11,11 @@ import java.io.RandomAccessFile;
 
 /**
  *
- * @author Romulo
+ * @author Grupo F
  */
 public class ContaCorrente extends Conta {   
     
-    //--------------------- Construtores ---------------------------------------
+//--------------------- Construtores ---------------------------------------
 
     public ContaCorrente(int idConta, float limite, String dataDeCriacao, float saldo, float taxaDeManutencao) {
         super(idConta, limite, dataDeCriacao, saldo, taxaDeManutencao);

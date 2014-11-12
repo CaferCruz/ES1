@@ -6,6 +6,11 @@
 package Operacoes;
 
 import banco.Agencia;
+import banco.Banco;
+import banco.Cliente;
+import banco.Funcionario;
+import banco.Gerente;
+import contas.CartaoCredito;
 import contas.Conta;
 import java.util.Scanner;
 
@@ -17,13 +22,15 @@ public class FachadaFuncionario {
 
     private final Scanner teclado = new Scanner(System.in);
     private final Conta cliente;
+    private final Funcionario funcionario;
     private Operacao operacao;
     private float valor;
     private boolean feito = false;
-//------------------------------Construtor--------------------------------------
 
-    public FachadaFuncionario(Conta usuario) {
+//------------------------------Construtor--------------------------------------
+    public FachadaFuncionario(Conta usuario, Funcionario funcionario) {
         this.cliente = usuario;
+        this.funcionario = funcionario;
     }
 //-------------------------------Métodos----------------------------------------
 
@@ -89,7 +96,17 @@ public class FachadaFuncionario {
     }
 
     public void pagarFatura() {
-        
-    
+        //Codigo da fatura.
+        System.out.println("Informe o numero da fatura");
+        int cod = teclado.nextInt();
+        //buscar a fatura na lista de faturas do banco
+        CartaoCredito cc = Banco.getClientePorFatura(cod);
+        //Fatura válida
+        if (cc != null) {
+            System.out.println("Informe o valor:");
+            valor = teclado.nextFloat();
+            operacao = new PagamentoFatura(cc, valor);
+            operacao.executar();
+        }
     }
 }
