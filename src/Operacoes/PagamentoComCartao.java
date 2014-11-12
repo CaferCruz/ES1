@@ -32,11 +32,5 @@ public class PagamentoComCartao extends Operacao{
     public void le(RandomAccessFile in) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
-    @Override
-    public String toString(){
-        return "Operação: Pagamento com cartão\n" + 
-                "Valor: " + this.getValor() +
-                "\nData: " + this.getData();
-    }
+    
 }
