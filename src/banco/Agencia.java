@@ -45,8 +45,11 @@ public class Agencia {
         return clientes.get(cpf);
     }
     
-    public Map<String, Cliente> getListaDeClientes() {
-        return clientes;
+    public void getListaDeClientes() {
+        Iterator iterador = clientes.values().iterator();
+        while(iterador.hasNext()) {
+            System.out.println("" + iterador.next());
+        }
     }
     
     //--------------------- to String ------------------------------------------

@@ -49,22 +49,23 @@ public class Menu {
 
     private static final Scanner teclado = new Scanner(System.in);
 
+    private static Agencia agencia = new Agencia(555, "Av. São Sebastião, Niteroi, RJ");
+    private static Gerente gerente = new Gerente(1234, "Carlos de Souza");
+
     //-------------------- Main ------------------------------------------------
     public static void main(String[] args) {
-
-        Agencia agencia = new Agencia(555, "Av. São Sebastião, Niteroi, RJ");
-        Gerente gerente = new Gerente(1234, "Carlos de Souza");
 
         boolean sair = false;
 
         System.out.println("** Bem vindo ao BankLine **\n");
         while (!sair) {
+
             System.out.println("--- MENU PRINCIPAL ---");
             System.out.println(MENU_INICIAL);
             int opcao = teclado.nextInt();
             switch (opcao) {
                 case 1:
-                    operacoesGerente(gerente, agencia);
+                    operacoesGerente();
                     break;
                 case 2:
                     operacoesFuncionario();
@@ -86,8 +87,7 @@ public class Menu {
     }
 
     // --------------------- Metodos -------------------------------------------
-    private static void operacoesGerente(Gerente gerente, Agencia agencia) {
-
+    private static void operacoesGerente() {
         System.out.println("** Bem vindo Gerente **");
         System.out.print("Digite sua senha: ");
         String senha = teclado.next() + teclado.nextLine();
@@ -137,7 +137,7 @@ public class Menu {
     }
 
     private static void cadastraCliente() {
-        Conta conta =  null;
+        Conta conta = null;
         System.out.println("Informe o NOME do cliente: ");
         String nomeCliente = teclado.next() + teclado.nextLine();
         System.out.println("Informe o CPF do cliente: ");
@@ -147,13 +147,13 @@ public class Menu {
         switch (escolha) {
             case 1:
                 conta = new ContaCorrente(0, escolha, Operacao.pegaData(), escolha, escolha);
-                
+
                 break;
             case 2:
                 break;
             case 3:
                 break;
         }
-                Cliente cliente = new Cliente(nomeCliente, cpfCliente, conta);
+        Cliente cliente = new Cliente(nomeCliente, cpfCliente, conta);
     }
 }

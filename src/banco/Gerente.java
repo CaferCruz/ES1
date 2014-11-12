@@ -7,6 +7,7 @@
 package banco;
 
 import contas.Conta;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -39,13 +40,13 @@ public class Gerente extends Funcionario{
     }
     
     public void listarClientes(Agencia agencia) {         
-        for (Map.Entry<String, Cliente> en : agencia.getListaDeClientes().entrySet()) {
-            String chave = en.getKey();
-            Cliente cliente = en.getValue();
-            System.out.println(cliente);
-        }
+        agencia.getListaDeClientes();
     }
     
     //-------------------- to String -------------------------------------------
     
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }

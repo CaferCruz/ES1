@@ -28,4 +28,9 @@ public class Saque extends Operacao {
     public void salva(RandomAccessFile out) {
         
     }
+
+    public void le(RandomAccessFile in) {
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }
