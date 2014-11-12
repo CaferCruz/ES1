@@ -5,6 +5,9 @@
  */
 package Operacoes;
 
+import banco.Banco;
+import banco.Funcionario;
+import contas.CartaoCredito;
 import contas.Conta;
 import java.util.Scanner;
 
@@ -12,17 +15,19 @@ import java.util.Scanner;
  *
  * @author Cafer
  */
-public class FachadaFuncionario {
+public class FachadaOperacoes {
 
     private final Scanner teclado = new Scanner(System.in);
     private final Conta cliente;
+    private final Funcionario funcionario;
     private Operacao operacao;
     private float valor;
     private boolean feito = false;
-//------------------------------Construtor--------------------------------------
 
-    public FachadaFuncionario(Conta usuario) {
+//------------------------------Construtor--------------------------------------
+    public FachadaOperacoes(Conta usuario, Funcionario funcionario) {
         this.cliente = usuario;
+        this.funcionario = funcionario;
     }
 //-------------------------------Métodos----------------------------------------
 
@@ -65,14 +70,37 @@ public class FachadaFuncionario {
     }
 
     public void transferir() {
-        System.out.println("informe o valor");
+        int contaDestino;
+        while (!feito) {
+            System.out.println("Informe a conta desejada");
+            contaDestino = teclado.nextInt();
+            
+            System.out.println("Informe o valor:");
+            valor = teclado.nextFloat();
+            if (valor == 0) {
+                System.out.println("Operação cancelada, retornando ao menu.");
+                return;
+            }
+            if (valor < cliente.getSaldo()) {
+                operacao = new Saque(cliente, valor);
+                operacao.executar();
+                cliente.setUpdate(operacao.toString());
+                cliente.setTipoUpdate(Conta.OPERACAO);
+                cliente.salvarHistorico();
+                feito = true;
+            } else {
+                System.out.println("Saldo insuficiente.");
+            }
 
+        }
+        
     }
 
     public void emprestar() {
+        
     }
 
-    ;
+    
     
     public void pagarComCartao() {
         System.out.println("Informe o valor");
@@ -89,10 +117,26 @@ public class FachadaFuncionario {
         }
         operacao = new PagamentoComCartao(cliente, valor);
         operacao.executar();
+        cliente.setUpdate(operacao.toString());
+        cliente.setTipoUpdate(Conta.OPERACAO);
+        cliente.salvarHistorico();
     }
 
     public void pagarFatura() {
-        
-    
+        //Codigo da fatura.
+        System.out.println("Informe o numero da fatura");
+        int cod = teclado.nextInt();
+        //buscar a fatura na lista de faturas do banco
+        CartaoCredito cC = Banco.getClientePorFatura(cod);
+        //Fatura válida
+        if (cC != null) {
+            System.out.println("Informe o valor:");
+            valor = teclado.nextFloat();
+            operacao = new PagamentoFatura(cC, valor);
+            operacao.executar();
+            cliente.setUpdate(operacao.toString());
+            cliente.setTipoUpdate(Conta.OPERACAO);
+            cliente.salvarHistorico();
+        }
     }
 }
