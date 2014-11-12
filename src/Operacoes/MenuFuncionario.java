@@ -30,6 +30,6 @@ public class MenuFuncionario {
         valor = teclado.nextFloat();
         Saque saque = new Saque(usuario, valor);
         saque.executar();
-        usuario.salvarHistorico(saque);
+        usuario.salvarHistorico();
     }
 }

@@ -20,8 +20,6 @@ public class CartaoCredito extends Conta {
         super(idConta, limite, dataDeCriacao, saldo, taxaDeManutencao);
     }
     
-    public CartaoCredito() {
-    }
 
     @Override
     public void le(RandomAccessFile in) throws IOException {

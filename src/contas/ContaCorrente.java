@@ -21,18 +21,15 @@ public class ContaCorrente extends Conta {
         super(idConta, limite, dataDeCriacao, saldo, taxaDeManutencao);
     }    
 
-    public ContaCorrente() { }    
-    
-    
     //--------------------- Metodos --------------------------------------------
     
     @Override
     public void le(RandomAccessFile in) throws IOException {
-        setIdConta(in.readInt());
-        setLimite(in.readFloat());
-        setDataDeCriacao(in.readUTF());
-        setSaldo(in.readFloat());
-        setTaxaDeManutencao(in.readFloat());
+//        setIdConta(in.readInt());
+//        setLimite(in.readFloat());
+//        setDataDeCriacao(in.readUTF());
+//        setSaldo(in.readFloat());
+//        setTaxaDeManutencao(in.readFloat());
     }
 
     @Override

@@ -6,12 +6,10 @@
 
 package Observer;
 
-import Operacoes.Operacao;
-
 /**
  *
  * @author Cafer
  */
 public interface Observer {
-    public void update(Operacao o);
+    public void update();
 }

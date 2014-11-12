@@ -15,5 +15,5 @@ import Operacoes.Operacao;
  public interface Observable {
     public void addObserver(Observer o);
     public void removeObserver(Observer o);
-    public void notifyObserver(Operacao o);
+    public void notifyObserver();
 }

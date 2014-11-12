@@ -5,7 +5,6 @@
  */
 package Operacoes;
 
-import banco.Agencia;
 import contas.Conta;
 import java.util.Scanner;
 
@@ -38,7 +37,9 @@ public class FachadaFuncionario {
             if (valor < cliente.getSaldo()) {
                 operacao = new Saque(cliente, valor);
                 operacao.executar();
-                cliente.salvarHistorico(operacao);
+                cliente.setUpdate(operacao.toString());
+                cliente.setTipoUpdate(Conta.OPERACAO);
+                cliente.salvarHistorico();
                 feito = true;
             } else {
                 System.out.println("Saldo insuficiente.");
@@ -57,7 +58,9 @@ public class FachadaFuncionario {
         }
         operacao = new Deposito(cliente, valor);
         operacao.executar();
-        cliente.salvarHistorico(operacao);
+        cliente.setUpdate(operacao.toString());
+        cliente.setTipoUpdate(Conta.OPERACAO);
+        cliente.salvarHistorico();
 
     }
 

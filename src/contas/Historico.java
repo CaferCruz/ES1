@@ -3,11 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package contas;
 
 import Observer.Observer;
-import Operacoes.Operacao;
 
 /**
  *
@@ -15,10 +13,30 @@ import Operacoes.Operacao;
  */
 public class Historico implements Observer {
 
-    @Override
-    public void update(Operacao o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    
+    private String logOperacoes;
+    private String logDados;
+    private final Conta conta;
+
+    public Historico(Conta conta) {
+        this.conta = conta;
     }
-    
+
+    @Override
+    public void update() {
+        if (conta.getTipoUpdate() == Conta.ESTRUTURAL) {
+            logDados += "\n" + conta.getUpdate();
+        } else {
+            logOperacoes += "\n" + conta.getUpdate();
+        }
+
+    }
+
+    public String getLogOperacoes() {
+        return logOperacoes;
+    }
+
+    public String getLogDados() {
+        return logDados;
+    }
+
 }

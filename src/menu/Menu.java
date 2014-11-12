@@ -22,21 +22,28 @@ public class Menu {
             "2 - FuncionarioCaixa \n" +
             "3 - Cliente \n" +
             "0 - Sair \n" +
-            "digite a opção->";
+            "digite uma opção->";
     
     private static final String MENU_GERENTE = 
             "1 - Cadastrar cliente \n" + 
             "2 - Realizar emprestimo \n" + 
             "3 - Listar clientes \n" + 
             "0 - voltar \n" +
-            "digite a opção -> ";
+            "digite uma opção -> ";
     
     private static final String MENU_FUNCIONARIO =
             "1 - Saque \n" +
             "2 - Deposito \n" +
             "3 - Transferencia \n" +
-            "0 - voltar" + 
-            "digite a opção ->";
+            "0 - voltar \n" + 
+            "digite uma opção ->";
+    
+    private static final String MENU_CAIXA_ELETRONICO = 
+            "1 - Saque \n" +
+            "2 - Deposito \n" +
+            "3 - Transferencia \n" +
+            "0 - voltar \n" +
+            "digite uma opção ->";
     
     private static final Scanner teclado = new Scanner(System.in);    
     
@@ -81,7 +88,7 @@ public class Menu {
     private static void operacoesGerente() {
 
         System.out.println("** Bem vindo Gerente **");
-        System.out.print("Digite sua senha: ");
+        System.out.print("Digite sua senha -> ");
         String senha = teclado.next() + teclado.nextLine();
         
         if(!gerente.verificarSenha(senha)) {
@@ -121,7 +128,42 @@ public class Menu {
     }
 
     private static void operacoesFuncionario() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        System.out.println("** Bem vindo Funcionario **");
+        System.out.print("Digite sua senha -> ");
+        String senha = teclado.next() + teclado.nextLine();
+        
+        if(!gerente.verificarSenha(senha)) {
+            System.out.println("** Senha incorreta! **");
+        }
+        else {
+            boolean sair = false;
+            System.out.println("");
+            while(!sair) {
+                System.out.println("--- MENU FUNCIONARIO ---");
+                System.out.println(MENU_FUNCIONARIO);
+                int opcao = teclado.nextInt();
+                switch(opcao) {
+                    case 1:
+                        // saque                        
+                        break;
+                    case 2:
+                        // deposito
+                        break;
+                    case 3:
+                        // transferencia
+                        break;
+                    case 0: 
+                        // voltar ao menu principal
+                        sair = true;
+                        break;
+                    default:
+                        System.out.println("Opção inválida =/");
+                        break;
+                }
+                System.out.println();
+            }                
+        }
     }
 
     private static void operacoesCliente() {
