@@ -44,8 +44,7 @@ public class Menu {
     private static Gerente gerente = new Gerente(1234, "Carlos de Souza");
     //-------------------- Main ------------------------------------------------
     
-    public static void main(String[] args) {        
-        
+    public static void main(String[] args) {             
         
         boolean sair = false;                
                 
