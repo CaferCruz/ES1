@@ -29,6 +29,7 @@ public class Extrato extends Operacao{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+
     public void le(RandomAccessFile in) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

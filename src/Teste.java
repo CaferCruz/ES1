@@ -55,11 +55,11 @@ public class Teste {
         try {
             arquivo = new RandomAccessFile(new File(NOME_ARQUIVO), "rw");
             
-            while(true) {
-                Conta c = new ContaCorrente();
-                c.le(arquivo);
-                System.out.println(c);
-            }
+//            while(true) {
+//                Conta c = new ContaCorrente();
+//                c.le(arquivo);
+//                System.out.println(c);
+//            }
             
         } catch(IOException e) {
             System.out.println(e);

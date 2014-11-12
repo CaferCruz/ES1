@@ -33,8 +33,11 @@ public class Transferencia extends Operacao {
         // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public void le(RandomAccessFile in) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    @Override
+    public String toString(){
+      return "Operação: Transferencia\n" +
+              "Valor: " + this.getValor() +
+              "\nConta destino: "+ contaDestino.getIdConta()+
+              "\nData: " + this.getData();  
     }
-
 }

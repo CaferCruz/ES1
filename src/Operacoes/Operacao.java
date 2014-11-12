@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Operacoes;
 
 import contas.Conta;
@@ -19,28 +18,34 @@ import java.util.Date;
  * @author Cafer
  */
 public abstract class Operacao {
+
     protected Conta contaOrigem;
     protected String data;
     protected float valor;
 
-    //-------------------------Contrutor----------------------------------------
+    //-------------------------Construtor---------------------------------------
     public Operacao(Conta contaOrigem, float valor) {
         this.contaOrigem = contaOrigem;
         this.data = pegaData();
         this.valor = valor;
     }
-    
+
     //-------------------------Metodo Estatico----------------------------------
-    public static String pegaData(){
+    public static String pegaData() {
         Date d = Calendar.getInstance().getTime();
         DateFormat f = new SimpleDateFormat("dd/MM/YYYY");
         DateFormat h = new SimpleDateFormat("HH:mm:ss");
-        return f.format(d) +" "+h.format(d);
+        return f.format(d) + " " + h.format(d);
     }
+
     //-------------------------Metodos Abstratos--------------------------------
+
     public abstract void executar();
-    public abstract void salva(RandomAccessFile out)throws IOException;
+
+    public abstract void salva(RandomAccessFile out) throws IOException;
+
     //-------------------------Getters e Setters--------------------------------
+
     public Conta getContaOrigem() {
         return contaOrigem;
     }
@@ -52,11 +57,6 @@ public abstract class Operacao {
     public float getValor() {
         return valor;
     }
-    
-    
-    
-    
-    
-    
-    
+
+
 }

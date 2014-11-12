@@ -17,14 +17,15 @@ public class Cliente {
     
     private String nome;
     private String cpf;
-    private List<Conta> contas;
+    private Conta conta;
 
     public Cliente() {
     }
 
-    public Cliente(String nome, String cpf) {
+    public Cliente(String nome, String cpf, Conta conta) {
         this.nome = nome;
         this.cpf = cpf;
+        this.conta = conta;
     }
 
     public String getNome() {
@@ -37,12 +38,12 @@ public class Cliente {
     
     // ---------------- getters e setters --------------------------------------
 
-    public List<Conta> getContas() {
-        return contas;
+    public Conta getContas() {
+        return conta;
     }
 
     public void setConta(Conta conta) {
-        this.contas.add(conta);
+        this.conta = conta ;
     }
     
     //------------------ to String ---------------------------------------------
@@ -50,7 +51,9 @@ public class Cliente {
     @Override
     public String toString() {
         return "Nome: " + nome + "\n" +
-                "CPF: " + cpf + "\n";
+                "CPF: " + cpf + "\n" +
+                conta.toString();
+
     }
     
 }
