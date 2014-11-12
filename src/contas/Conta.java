@@ -79,13 +79,17 @@ public abstract class Conta implements Observable {
     public float getTaxaDeManutencao() {
         return taxaDeManutencao;
     }
-
+    
     public void setTaxaDeManutencao(float taxaDeManutencao) {
         update = "Taxa de manutenção alterada.\n " + "Taxa anterior: " + this.getTaxaDeManutencao() + "Taxa atual: " + taxaDeManutencao
                 + "\nData da alteração:" + Operacao.pegaData();
         tipoUpdate = ESTRUTURAL;
         this.taxaDeManutencao = taxaDeManutencao;
         salvarHistorico();
+    }
+    
+    public Historico getHistorico(){
+        return  (Historico) this.historico;
     }
 
     // ---------------------- Operações ----------------------------------------    

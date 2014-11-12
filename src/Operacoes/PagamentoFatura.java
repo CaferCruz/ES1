@@ -28,4 +28,11 @@ public class PagamentoFatura extends Operacao {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Override
+    public String toString() {
+        return "Operação: Pagamento de fatura" + 
+                "\nValor: " + this.getValor() +
+                "\nData: " + this.getData();
+    }
+
 }
